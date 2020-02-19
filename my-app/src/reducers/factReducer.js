@@ -1,23 +1,23 @@
-import { GET_FACTS, UPDATE_FACTS, SET_ERROR } from '../actions';
+import { GET_JOKES, UPDATE_JOKES, SET_ERROR } from '../actions';
 
 const initialState = {
-    facts: [],
+    jokes: [],
     isFetchingData: false,
     error: ''
 };
 
 export const factReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_FACTS:
+        case GET_JOKES:
             return {
                 ...state,
                 isFetchingData: true,
-                facts: []
+                jokes: []
             };
-        case UPDATE_FACTS:
+        case UPDATE_JOKES:
             return {
                 ...state,
-                facts: action.payload,
+                jokes: action.payload,
                 isFetchingData: false
             };
         case SET_ERROR:

@@ -1,13 +1,18 @@
 import axios from 'axios';
 
-export const getData = () => dispatch => {
-    dispatch({ type: GET_FACTS });
-    axios.get('https://cat-fact.herokuapp.com/facts')
+export const GET_JOKES = 'GET_JOKES';
+export const UPDATE_JOKES = 'UPDATE_JOKES';
+export const SET_ERROR = 'SET_ERROR';
+
+export const getJokes = () => dispatch => {
+    dispatch({ type: GET_JOKES });
+    axios.get('https://sv443.net/jokeapi/category/miscellaneous')
         .then(res => {
-            console.log(res);
-            dispatch({ type: UPDATE_FACTS, payload: res.data });
+            console.log('res', res);
+            dispatch({ type: UPDATE_JOKES, payload: res.data });
         })
         .catch(err => {
+            console.log(err);
             dispatch({ type: SET_ERROR, payload: 'error' });
         });
         

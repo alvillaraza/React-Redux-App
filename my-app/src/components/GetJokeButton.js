@@ -1,17 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getJokes } from '../actions';
 
 const GetFactButton = props => {
+
+    const handleGetData = e => {
+        e.preventDefault();
+        props.getFacts();
+    };
 
     return (
         <>
             {props.isFetchingData ? (
                 <div>Grabbing Data</div>
             ) : (
-                    <button onClick={handleGetData}>Meow</button>
+                    <button onClick={handleGetData}>Make Me Laugh</button>
                 )}
         </>
-    )
+    );
 };
 
 const mapStateToProps = state => {
@@ -20,4 +26,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { getFacts })(GetFactButton);
+export default connect(mapStateToProps, { getFacts: getJokes })(GetFactButton);
