@@ -14,7 +14,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        LMFAO
+        
         <p>
           <GetJokeButton />
         </p>

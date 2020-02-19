@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 const Jokes = props => {
-    console.log(props);
+    const [delivery, setDelivery] = useState(false);
+    // console.log(props);
     return (
         <>
+                
             {props.error === false ? 
-                <div>{props.error}</div> : <div>{props.jokes.setup}<p>{props.jokes.delivery}</p></div>                }
+                <div>{props.error}</div> : <>
+                    <div className='half setup'>
+                    {props.jokes.setup}
+                    
+                    {props.jokes.setup ? <p><button className='button' onClick={() => { setDelivery(!delivery) }}>huh?</button></p> : ''}
+
+                </div>
+                    <div className={`${delivery ? 'delivery-show' : ''} half delivery`}>{props.jokes.delivery}</div></>}
         </>
     )
 };
